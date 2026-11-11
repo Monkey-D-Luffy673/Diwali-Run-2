@@ -10,10 +10,21 @@ const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Relative base so the built site works from any subpath
+  // (e.g. GitHub Pages project site: /Diwali-Run-2/)
+  base: "./",
   plugins: [react(), tailwindcss(), viteSingleFile()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
+  },
+  server: {
+    host: true,
+    allowedHosts: true,
+  },
+  preview: {
+    host: true,
+    allowedHosts: true,
   },
 });
